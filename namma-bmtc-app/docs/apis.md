@@ -1,6 +1,6 @@
 # APIs
 
-## API 1. Route points
+## API 1. Route Points
 
 Takes `route_id` as input and returns geo-locations of the route to be taken in response. There isn't an identifier for the bus stop in this dataset. Instead it'points are at regular distance along the route.
 
@@ -11,7 +11,7 @@ curl -X POST 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/RoutePoints' \
   -d '{"routeid":3796}'
 ```
 
-Sample response
+Sample response:
 
 ```json
 {
@@ -45,7 +45,7 @@ Sample response
 }
 ```
 
-## API 2. List vehicles
+## API 2. List Vehicles
 
 Returns ID and registration number of vehicles which match the vehicle number passed in the argument. Ex: `0007` returns `KA53F0007` and `KA57F0007`.
 
@@ -56,7 +56,7 @@ curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/ListVehicles' \
   --data-raw '{"vehicleRegNo":"0007"}'
 ```
 
-Sample response
+Sample response:
 
 ```json
 {
@@ -91,7 +91,7 @@ curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2' \
   --data-raw '{"vehicleId":21670}'
 ```
 
-Sample response
+Sample response:
 
 ```json
 {
@@ -178,7 +178,7 @@ curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/GetPathDetails' \
   --data-raw '{"data":[{"tripId":68076592,"fromStationId":20921,"toStationId":21166},{"tripId":68068463,"fromStationId":21166,"toStationId":21545}]}'
 ```
 
-Sample response
+Sample response:
 
 ```json
 {
@@ -237,7 +237,7 @@ curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchByRouteDetails_v4' \
   --data-raw '{"routeid":2116,"servicetypeid":0}'
 ```
 
-Sample response
+Sample response:
 
 ```json
 {
@@ -319,6 +319,46 @@ Sample response
     "issuccess": true,
     "exception": null,
     "rowCount": 0,
+    "responsecode": 200
+}
+```
+
+## API 6. List Routes
+
+Takes a route text for regex matching and returns matching routes in response.
+
+```bash
+curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchRoute_v2' \
+  -H 'Content-Type: application/json' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \
+  -H 'lan: en' \
+  --data-raw '{"routetext":"210"}'
+```
+
+Sample response:
+
+```json
+{
+    "data": [
+        {
+            "union_rowno": 2,
+            "row": 1,
+            "routeno": "210-A",
+            "responsecode": 200,
+            "routeparentid": 7426
+        },
+        {
+            "union_rowno": 2,
+            "row": 3,
+            "routeno": "210-AA",
+            "responsecode": 200,
+            "routeparentid": 7427
+        }
+    ],
+    "Message": "Success",
+    "Issuccess": true,
+    "exception": null,
+    "RowCount": 53,
     "responsecode": 200
 }
 ```
