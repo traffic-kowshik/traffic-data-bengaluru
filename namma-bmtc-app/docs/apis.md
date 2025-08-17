@@ -234,7 +234,9 @@ Takes a `route_id` as input and returns detils of the route along with live vehi
 curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchByRouteDetails_v4' \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \
-  --data-raw '{"routeid":2116,"servicetypeid":0}'
+  -H 'deviceType: WEB' \
+  -H 'lan: en' \
+  --data-raw '{"routeid":3796,"servicetypeid":0}'
 ```
 
 Sample response:
