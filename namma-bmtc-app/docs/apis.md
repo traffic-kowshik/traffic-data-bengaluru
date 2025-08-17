@@ -176,7 +176,11 @@ curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/GetPathDetails' \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \
   --data-raw '{"data":[{"tripId":68076592,"fromStationId":20921,"toStationId":21166},{"tripId":68068463,"fromStationId":21166,"toStationId":21545}]}'
+```
 
+Sample response
+
+```json
 {
     "data": [
         {
