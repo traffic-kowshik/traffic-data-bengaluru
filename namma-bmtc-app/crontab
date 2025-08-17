@@ -1,0 +1,2 @@
+# To download data every minute, setup the below rule in crontab.
+* * * * * cd /Users/traffic/code/traffic-kowshik/traffic-data-bengaluru/namma-bmtc-app && /usr/local/bin/quarto render nbs/01_trip_details.qmd --execute --to ipynb --output _tmp_exec.ipynb && rm _tmp_exec.ipynb 2>&1 | tee -a logs/01_trip_details.log

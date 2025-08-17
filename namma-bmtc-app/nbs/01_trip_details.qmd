@@ -1,0 +1,43 @@
+---
+title: "Trip Details"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+Download trip details from Trip Details API.
+
+```{python}
+#!/usr/bin/env python3
+
+import requests
+import json
+import os
+import sys
+from pathlib import Path
+
+print('Hello, world!')
+
+data_dir = Path("../data/")
+url = 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2'
+headers = {
+    'Content-Type': 'application/json',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+}
+data = {"vehicleId": 21670}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    vehicle_dir = Path(data_dir) / 'trips' / str(data["vehicleId"])
+    vehicle_dir.mkdir(parents=True, exist_ok=True)
+    
+    response_data = response.json()
+    trip_id = response_data['RouteDetails'][0]['tripid']
+    response_file = vehicle_dir / f"{trip_id}.txt"
+    with open(response_file, 'a') as f:
+        f.write(response.text + '\n')
+else:
+    print(f"Error: {response.status_code}. {response.text}")
+```
