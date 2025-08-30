@@ -1,1 +1,3 @@
 /.quarto/
+*.log
+*.json
