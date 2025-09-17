@@ -5,4 +5,6 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://traffic-kowshik.github.io',
                 'git_url': 'https://github.com/traffic-kowshik/traffic-data-bengaluru',
                 'lib_path': 'traffic_data_bengaluru'},
-  'syms': {'traffic_data_bengaluru.core': {'traffic_data_bengaluru.core.foo': ('core.html#foo', 'traffic_data_bengaluru/core.py')}}}
+  'syms': { 'traffic_data_bengaluru.bmtc': { 'traffic_data_bengaluru.bmtc.fetch_routes': ( 'bmtc.html#fetch_routes',
+                                                                                           'traffic_data_bengaluru/bmtc.py')},
+            'traffic_data_bengaluru.core': {'traffic_data_bengaluru.core.foo': ('core.html#foo', 'traffic_data_bengaluru/core.py')}}}
