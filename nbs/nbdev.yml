@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "traffic-data-bengaluru"
+  site-url: "https://traffic-kowshik.github.io/traffic-data-bengaluru"
+  description: "Datasets on traffic and mobility in Bengaluru."
+  repo-branch: main
+  repo-url: "https://github.com/traffic-kowshik/traffic-data-bengaluru"
