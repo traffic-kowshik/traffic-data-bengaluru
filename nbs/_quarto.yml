@@ -20,3 +20,9 @@ website:
     style: floating
 
 metadata-files: [nbdev.yml, sidebar.yml]
+
+execute:
+  echo: true
+  warning: true
+  error: true
+  cache: false
