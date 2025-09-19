@@ -24,6 +24,7 @@ import pandas as pd
 
 # %% ../nbs/bmtc.ipynb 7
 def fetch_routes(pattern: str = ""):
+    time.sleep(0.1)
     logging.info(f"Fetching routes for pattern = '{pattern}'")
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchRoute_v2"
 
