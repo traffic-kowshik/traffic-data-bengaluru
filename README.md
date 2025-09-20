@@ -15,3 +15,12 @@ $ pip install -e .
 # compile to have changes apply to traffic_data_bengaluru
 $ nbdev_prepare
 ```
+
+# Quickstart
+
+### BMTC
+
+``` bash
+# Fetch BMTC routes matching your pattern.
+python -m cli fetch_routes --pattern 210-N
+```
