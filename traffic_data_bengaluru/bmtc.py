@@ -30,7 +30,6 @@ from .utils import *
 def fetch_routes(pattern: str = "", sleep_duration: float = 0.1):
     """Fetches BMTC routes matching the given pattern, or all routes if pattern is empty."""
     time.sleep(sleep_duration)
-    logging.info(f"Fetching routes for pattern = '{pattern}'")
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchRoute_v2"
 
     headers = {
@@ -99,7 +98,6 @@ def convert_route_to_geojson(route, properties):
 def fetch_vehicles(pattern: str = "", sleep_duration: float = 0.1):
     """Fetch vehicles matching the given registration number pattern from BMTC API."""
     time.sleep(sleep_duration)
-    logging.info(f"Fetching vehicles for pattern = '{pattern}'")
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/ListVehicles"
 
     headers = {
@@ -129,7 +127,6 @@ def fetch_vehicles(pattern: str = "", sleep_duration: float = 0.1):
 def fetch_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
     """Fetch trip details for a given vehicle ID from the BMTC API."""
     time.sleep(sleep_duration)
-    logging.info(f"Fetching trip details for vehicle ID = '{vehicle_id}'")
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2"
 
     headers = {
