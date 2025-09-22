@@ -8,7 +8,7 @@ __all__ = ['get_latest_directory', 'read_file']
 # %% ../nbs/utils.ipynb 5
 import json
 import pandas as pd
-from pathlib import Path
+from fastcore.all import Path
 
 # %% ../nbs/utils.ipynb 6
 def get_latest_directory(directory: Path):
