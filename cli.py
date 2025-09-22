@@ -2,7 +2,7 @@ import datetime
 import json
 from pathlib import Path
 import fire
-from traffic_data_bengaluru.bmtc import fetch_routes, process_routes
+from traffic_data_bengaluru.bmtc import fetch_routes, process_routes, fetch_vehicles, process_vehicles
 
 import logging
 logging.basicConfig(
@@ -33,5 +33,30 @@ def bmtc_fetch_routes():
     df_routes.to_csv(filepath, index=False)
     logger.info(f"Processed routes saved successfully to {filepath}")
 
+
+def bmtc_fetch_vehicles():
+    data_directory = Path('data/bmtc/')
+    filename = f'{str(int(datetime.datetime.now().timestamp()))}'
+
+    logger.info("Fetching vehicles ...")
+    vehicles = fetch_vehicles()
+
+    filepath = data_directory / 'raw' / 'vehicles' / f'{filename}.json'
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    with open(filepath, 'w') as f:
+        json.dump(vehicles, f, indent=2)
+    logger.info(f"Raw vehicles saved successfully to {filepath}")
+
+    logger.info("Processing vehicles ...")
+    df_vehicles = process_vehicles(vehicles)
+
+    filepath = data_directory / 'cleaned' / 'vehicles' / f'{filename}.csv'
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    df_vehicles.to_csv(filepath, index=False)
+    logger.info(f"Processed vehicles saved successfully to {filepath}")
+
 if __name__ == "__main__":
-    fire.Fire({"bmtc_fetch_routes": bmtc_fetch_routes})
+    fire.Fire({
+        "bmtc_fetch_routes": bmtc_fetch_routes,
+        "bmtc_fetch_vehicles": bmtc_fetch_vehicles,
+    })

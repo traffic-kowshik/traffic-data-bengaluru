@@ -4,7 +4,7 @@
 
 # %% auto 0
 __all__ = ['fetch_routes', 'process_routes', 'fetch_route_points', 'get_route_id', 'convert_route_to_geojson', 'fetch_vehicles',
-           'fetch_trip_details', 'extract_live_location', 'extract_live_locations']
+           'process_vehicles', 'fetch_trip_details', 'extract_live_location', 'extract_live_locations']
 
 # %% ../nbs/bmtc.ipynb 4
 import string
@@ -50,8 +50,7 @@ def fetch_routes(pattern: str = "", sleep_duration: float = 0.1):
     else:
         routes = []
         characters = string.digits + string.ascii_lowercase
-        for pattern in characters:
-            time.sleep(0.1)
+        for pattern in tqdm(characters, desc = 'Fetching routes'):
             routes += fetch_routes(pattern)
         return routes
 
@@ -130,11 +129,21 @@ def fetch_vehicles(pattern: str = "", sleep_duration: float = 0.1):
         vehicles = []
         characters = string.digits + string.ascii_lowercase
         for pattern in tqdm(characters, desc = 'Fetching vehicles'):
-            time.sleep(0.1)
             vehicles += fetch_vehicles(pattern)
         return vehicles
 
-# %% ../nbs/bmtc.ipynb 31
+# %% ../nbs/bmtc.ipynb 27
+def process_vehicles(vehicles):
+    """Process and clean vehicle data, returning a DataFrame with `vehicle_id` and `registration_number`."""
+    df_vehicles = pd.DataFrame(vehicles)
+    df_vehicles = df_vehicles.drop_duplicates(subset=["vehicleregno"], keep="first")
+
+    df_vehicles.rename(columns = {'vehicleid': 'vehicle_id', 'vehicleregno': 'registration_number'}, inplace=True)
+    df_vehicles = df_vehicles.sort_values(by='vehicle_id').reset_index(drop=True)
+    columns = ['vehicle_id', 'registration_number']
+    return df_vehicles[columns]
+
+# %% ../nbs/bmtc.ipynb 32
 def fetch_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
     """Fetch trip details for a given vehicle ID from the BMTC API."""
     time.sleep(sleep_duration)
@@ -155,7 +164,7 @@ def fetch_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
         print("Response text:", getattr(e.response, "text", None))
         return None
 
-# %% ../nbs/bmtc.ipynb 36
+# %% ../nbs/bmtc.ipynb 37
 def extract_live_location(trip_detail):
     """Extract live location from trip detail."""
     try:
@@ -168,7 +177,7 @@ def extract_live_location(trip_detail):
     # We could use the route details and live location to determine which is the right route that the vehicle is running on.
     return locations
 
-# %% ../nbs/bmtc.ipynb 37
+# %% ../nbs/bmtc.ipynb 38
 def extract_live_locations(directory: Path):
     """Extract live location for all trip details in a directory."""
     live_locations = []
