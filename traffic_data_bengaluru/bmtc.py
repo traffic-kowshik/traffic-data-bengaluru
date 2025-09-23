@@ -4,7 +4,7 @@
 
 # %% auto 0
 __all__ = ['fetch_routes', 'process_routes', 'get_routes', 'fetch_route_points', 'get_route_id', 'convert_route_to_geojson',
-           'fetch_vehicles', 'process_vehicles', 'fetch_trip_details', 'extract_live_location',
+           'fetch_vehicles', 'process_vehicles', 'get_vehicles', 'fetch_vehicle_trip_details', 'extract_live_location',
            'extract_live_locations']
 
 # %% ../nbs/bmtc.ipynb 4
@@ -92,12 +92,12 @@ def fetch_route_points(route_id: str, sleep_duration: float = 0.1):
         print(f"Error: {e}")
         return None
 
-# %% ../nbs/bmtc.ipynb 23
+# %% ../nbs/bmtc.ipynb 24
 def get_route_id(filepath: Path):
     """The filepath has `route_id` at the end."""
     return filepath.name.split('.')[0]
 
-# %% ../nbs/bmtc.ipynb 24
+# %% ../nbs/bmtc.ipynb 25
 def convert_route_to_geojson(route, properties):
     """Converts route into a geojson Feature."""
     if route is None:
@@ -110,7 +110,7 @@ def convert_route_to_geojson(route, properties):
     feature = geojson.Feature(geometry = geometry, properties = properties)
     return feature
 
-# %% ../nbs/bmtc.ipynb 28
+# %% ../nbs/bmtc.ipynb 30
 def fetch_vehicles(pattern: str = "", sleep_duration: float = 0.1):
     """Fetch vehicles matching the given registration number pattern from BMTC API."""
     time.sleep(sleep_duration)
@@ -138,7 +138,7 @@ def fetch_vehicles(pattern: str = "", sleep_duration: float = 0.1):
             vehicles += fetch_vehicles(pattern)
         return vehicles
 
-# %% ../nbs/bmtc.ipynb 30
+# %% ../nbs/bmtc.ipynb 33
 def process_vehicles(vehicles):
     """Process and clean vehicle data, returning a DataFrame with `vehicle_id` and `registration_number`."""
     df_vehicles = pd.DataFrame(vehicles)
@@ -149,8 +149,14 @@ def process_vehicles(vehicles):
     columns = ['vehicle_id', 'registration_number']
     return df_vehicles[columns]
 
-# %% ../nbs/bmtc.ipynb 35
-def fetch_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
+# %% ../nbs/bmtc.ipynb 36
+def get_vehicles(data_directory: Path):
+    filepath = get_latest_directory(data_directory / "cleaned" / "vehicles")
+    vehicles = pd.read_csv(filepath)
+    return vehicles
+
+# %% ../nbs/bmtc.ipynb 41
+def fetch_vehicle_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
     """Fetch trip details for a given vehicle ID from the BMTC API."""
     time.sleep(sleep_duration)
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2"
@@ -170,7 +176,7 @@ def fetch_trip_details(vehicle_id: int, sleep_duration: float = 0.1):
         print("Response text:", getattr(e.response, "text", None))
         return None
 
-# %% ../nbs/bmtc.ipynb 40
+# %% ../nbs/bmtc.ipynb 46
 def extract_live_location(trip_detail):
     """Extract live location from trip detail."""
     try:
@@ -183,7 +189,7 @@ def extract_live_location(trip_detail):
     # We could use the route details and live location to determine which is the right route that the vehicle is running on.
     return locations
 
-# %% ../nbs/bmtc.ipynb 41
+# %% ../nbs/bmtc.ipynb 47
 def extract_live_locations(directory: Path):
     """Extract live location for all trip details in a directory."""
     live_locations = []

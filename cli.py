@@ -5,7 +5,7 @@ from fastcore.all import Path
 import fire
 from tqdm import tqdm
 from traffic_data_bengaluru.utils import read_file
-from traffic_data_bengaluru.bmtc import fetch_routes, process_routes, fetch_vehicles, process_vehicles, fetch_route_points, get_routes, get_route_id, convert_route_to_geojson
+from traffic_data_bengaluru.bmtc import fetch_routes, process_routes, fetch_vehicles, process_vehicles, fetch_route_points, get_routes, get_route_id, convert_route_to_geojson, fetch_vehicle_trip_details, get_vehicles
 
 import logging
 logging.basicConfig(
@@ -96,9 +96,25 @@ def bmtc_fetch_route_points():
         json.dump(fc, f)
 
 
+def bmtc_fetch_vehicle_trip_details():
+    data_directory = Path('data/bmtc/')
+
+    filename = f'{str(int(datetime.datetime.now().timestamp()))}'
+    directory = data_directory / 'raw' / 'vehicle_trip_details' / filename
+    directory.mkdir(exist_ok=True, parents=True)
+
+    logger.info("Fetching vehicle trip details ...")
+    df_vehicles = get_vehicles(data_directory)
+    for index, row in tqdm(df_vehicles.iterrows(), total = df_vehicles.shape[0], desc = 'Fetching vehicle trip details'):
+        trip_details = fetch_vehicle_trip_details(vehicle_id = row['vehicle_id']) 
+        with open(directory / f"{row['vehicle_id']}.json", "w") as f:
+            json.dump(trip_details, f, indent = 4)
+
+
 if __name__ == "__main__":
     fire.Fire({
         "bmtc_fetch_routes": bmtc_fetch_routes,
         "bmtc_fetch_vehicles": bmtc_fetch_vehicles,
         "bmtc_fetch_route_points": bmtc_fetch_route_points,
+        "bmtc_fetch_vehicle_trip_details": bmtc_fetch_vehicle_trip_details
     })
