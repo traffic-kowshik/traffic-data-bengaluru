@@ -23,6 +23,7 @@ import requests
 import pandas as pd
 from fastcore.all import Path
 from ...utils import *
+from nbdev.config import get_config
 
 # %% ../../../nbs/bmtc/apis/04_vehicle_trip_details.ipynb 18
 def fetch_vehicle_trip_details(vehicle_id: int, sleep_duration: float = 0.1):

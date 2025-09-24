@@ -23,6 +23,7 @@ import requests
 import pandas as pd
 from fastcore.all import Path
 from ...utils import *
+from nbdev.config import get_config
 
 # %% ../../../nbs/bmtc/apis/02_route_points.ipynb 12
 def fetch_route_points(route_id: str, sleep_duration: float = 0.1):
