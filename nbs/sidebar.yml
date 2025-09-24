@@ -2,5 +2,12 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - bmtc.ipynb
       - utils.ipynb
+      - section: BMTC
+        contents:
+          - section: APIs
+            contents:
+              - bmtc/apis/01_routes.ipynb
+              - bmtc/apis/02_route_points.ipynb
+              - bmtc/apis/03_vehicles.ipynb
+              - bmtc/apis/04_vehicle_trip_details.ipynb
