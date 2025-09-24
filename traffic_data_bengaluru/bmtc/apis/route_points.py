@@ -16,8 +16,10 @@ import geojson
 import requests
 import pandas as pd
 from fastcore.all import Path
-from ...utils import *
 from nbdev.config import get_config
+
+from ...utils import *
+from .routes import get_routes
 
 # %% ../../../nbs/bmtc/apis/02_route_points.ipynb 8
 import logging
