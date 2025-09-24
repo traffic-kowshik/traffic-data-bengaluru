@@ -34,18 +34,6 @@ def bmtc_fetch_route_points():
     task_fetch_route_points(data_directory=data_directory)
 
 def bmtc_fetch_vehicle_trip_details():
-    data_directory = Path('data/bmtc/')
-
-    filename = f'{str(int(datetime.datetime.now().timestamp()))}'
-    directory = data_directory / 'raw' / 'vehicle_trip_details' / filename
-    directory.mkdir(exist_ok=True, parents=True)
-
-    logger.info("Fetching vehicle trip details ...")
-    df_vehicles = get_vehicles(data_directory)
-    for index, row in tqdm(df_vehicles.iterrows(), total = df_vehicles.shape[0], desc = 'Fetching vehicle trip details'):
-        trip_details = fetch_vehicle_trip_details(vehicle_id = row['vehicle_id']) 
-        with open(directory / f"{row['vehicle_id']}.json", "w") as f:
-            json.dump(trip_details, f, indent = 4)
 
 ############### BMTC - END OF SECTION ###############
 
