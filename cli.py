@@ -4,9 +4,12 @@ import json
 from fastcore.all import Path
 import fire
 from tqdm import tqdm
+from nbdev.config import get_config
+
 from traffic_data_bengaluru.utils import read_file
 from traffic_data_bengaluru.bmtc.apis.routes import task_fetch_routes
-from nbdev.config import get_config
+from traffic_data_bengaluru.bmtc.apis.vehicles import task_fetch_vehicles
+
 
 import logging
 logging.basicConfig(
@@ -27,25 +30,7 @@ def bmtc_fetch_routes():
     task_fetch_routes(data_directory=data_directory)
 
 def bmtc_fetch_vehicles():
-    data_directory = Path('data/bmtc/')
-    filename = f'{str(int(datetime.datetime.now().timestamp()))}'
-
-    logger.info("Fetching vehicles ...")
-    vehicles = fetch_vehicles()
-
-    filepath = data_directory / 'raw' / 'vehicles' / f'{filename}.json'
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    with open(filepath, 'w') as f:
-        json.dump(vehicles, f, indent=2)
-    logger.info(f"Raw vehicles saved successfully to {filepath}")
-
-    logger.info("Processing vehicles ...")
-    df_vehicles = process_vehicles(vehicles)
-
-    filepath = data_directory / 'cleaned' / 'vehicles' / f'{filename}.csv'
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    df_vehicles.to_csv(filepath, index=False)
-    logger.info(f"Processed vehicles saved successfully to {filepath}")
+    task_fetch_vehicles(data_directory=data_directory)
 
 def bmtc_fetch_route_points():
     data_directory = Path('data/bmtc/')

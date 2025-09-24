@@ -66,7 +66,7 @@ def process_vehicles(vehicles):
     columns = ['vehicle_id', 'registration_number']
     return df_vehicles[columns]
 
-# %% ../../../nbs/bmtc/apis/03_vehicles.ipynb 19
+# %% ../../../nbs/bmtc/apis/03_vehicles.ipynb 22
 def get_vehicles(data_directory: Path):
     filepath = get_latest_directory(data_directory / "cleaned" / "vehicles")
     vehicles = pd.read_csv(filepath)
