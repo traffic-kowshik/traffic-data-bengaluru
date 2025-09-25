@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-project_dir=/home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru
+project_dir=$HOME/code/traffic-kowshik/traffic-data-bengaluru
+data_dir=$project_dir/data
 log_dir=$project_dir/logs
 
-/usr/bin/gsutil -m rsync -r \
-  "$HOME/code/traffic-kowshik/traffic-data-bengaluru/data/" \
-  gs://traffic-kowshik-private/traffic-data-bengaluru/data/ >> $log_dir/rsync.log 2>&1
+cloud_dir="gs://traffic-kowshik-private/traffic-data-bengaluru/data/"
+
+GSUTIL=$(command -v gsutil)
+"$GSUTIL" -m rsync -r "$data_dir/" "$cloud_dir" >> "$log_dir/rsync.log" 2>&1
