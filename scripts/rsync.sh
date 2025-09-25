@@ -6,4 +6,4 @@ log_dir=$project_dir/logs
 
 /usr/bin/gsutil -m rsync -r \
   "$HOME/code/traffic-kowshik/traffic-data-bengaluru/data/" \
-  gs://traffic-kowshik-bmtc-private/traffic-data-bengaluru/data/ >> $log_dir/rsync.log 2>&1
+  gs://traffic-kowshik-private/traffic-data-bengaluru/data/ >> $log_dir/rsync.log 2>&1
