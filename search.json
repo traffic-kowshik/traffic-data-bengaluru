@@ -1,0 +1,210 @@
+[
+  {
+    "objectID": "bmtc/apis/vehicle_trip_details.html",
+    "href": "bmtc/apis/vehicle_trip_details.html",
+    "title": "4. Vehicle trip details",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  --data-raw '{\"vehicleId\":21670}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "4. Vehicle trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicle_trip_details.html#sample-request",
+    "href": "bmtc/apis/vehicle_trip_details.html#sample-request",
+    "title": "4. Vehicle trip details",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/VehicleTripDetails_v2' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  --data-raw '{\"vehicleId\":21670}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "4. Vehicle trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicle_trip_details.html#sample-response",
+    "href": "bmtc/apis/vehicle_trip_details.html#sample-response",
+    "title": "4. Vehicle trip details",
+    "section": "Sample response",
+    "text": "Sample response\n{\n    \"RouteDetails\": [\n        {\n            \"rowid\": 1,\n            \"tripid\": 68043555,\n            \"routeno\": \"210-N\",\n            \"routename\": \"KBS-UTH\",\n            \"busno\": \"KA57F0614\",\n            \"tripstatus\": \"Running\",\n            \"tripstatusid\": \"1\",\n            \"sourcestation\": \"Kempegowda Bus Station\",\n            \"destinationstation\": \"Uttarahalli Bus Stand\",\n            \"servicetype\": \"Non AC/Ordinary\",\n            \"webservicetype\": \"Non-AC\",\n            \"servicetypeid\": 72,\n            \"lastupdatedat\": \"17-08-2025 12:33:18\",\n            \"stationname\": \"Uttarahalli Bus Stand\",\n            \"stationid\": 22569,\n            \"actual_arrivaltime\": null,\n            \"etastatus\": \"12:41\",\n            \"etastatusmapview\": \"12:41\",\n            \"latitude\": 12.90535,\n            \"longitude\": 77.54327,\n            \"currentstop\": \"\",\n            \"laststop\": \"Gowdanapalya (Towards Uttarahalli)\",\n            \"weblaststop\": \"Gowdanapalya\",\n            \"nextstop\": \"Chikkallasandra Aralimara (Towards Uttarahalli)\",\n            \"currlatitude\": 12.911503,\n            \"currlongitude\": 77.555923,\n            \"sch_arrivaltime\": \"12:48\",\n            \"sch_departuretime\": \"12:48\",\n            \"eta\": \"12:41\",\n            \"actual_arrivaltime1\": null,\n            \"actual_departudetime\": null,\n            \"tripstarttime\": \"11:50\",\n            \"tripendtime\": \"12:55\",\n            \"routeid\": 3796,\n            \"vehicleid\": 21670,\n            \"responsecode\": 200,\n            \"lastreceiveddatetimeflag\": 1,\n            \"srno\": 1584405201,\n            \"tripposition\": 1,\n            \"stopstatus\": 1,\n            \"stopstatus_distance\": 1.53,\n            \"lastetaupdated\": \"2025-08-17T12:41:00\",\n            \"minstopstatus_distance\": 0.38\n        }\n    ],\n    \"LiveLocation\": [\n        {\n            \"latitude\": 12.911503,\n            \"longitude\": 77.555923,\n            \"location\": \"Gowdanapalya (Towards Kadirenahalli)\",\n            \"lastrefreshon\": \"17-08-2025 12:33:18\",\n            \"nextstop\": \"Chikkallasandra Aralimara (Towards Uttarahalli)\",\n            \"previousstop\": \"Prarthana School (Towards Uttarahalli)\",\n            \"vehicleid\": 21670,\n            \"vehiclenumber\": \"KA57F0614\",\n            \"routeno\": \"210-N\",\n            \"servicetypeid\": 72,\n            \"servicetype\": \"Non AC/Ordinary\",\n            \"heading\": 241.00,\n            \"responsecode\": 200,\n            \"trip_status\": 1,\n            \"lastreceiveddatetimeflag\": 1\n        }\n    ],\n    \"Message\": \"Success\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 29,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "4. Vehicle trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicle_trip_details.html#issue-1.-vehicle-is-assigned-to-more-than-one-route",
+    "href": "bmtc/apis/vehicle_trip_details.html#issue-1.-vehicle-is-assigned-to-more-than-one-route",
+    "title": "4. Vehicle trip details",
+    "section": "Issue 1. Vehicle is assigned to more than one route",
+    "text": "Issue 1. Vehicle is assigned to more than one route\nVehicles on some occassions are assigned to more than one route. Ex: Vehicle KA57F5808 is assigned to two routes, routeno = 210-NA and routeno = D33-PPLO.\n\"LiveLocation\": [\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"210-NA\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    },\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"D33-PPLO\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    }\n]",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "4. Vehicle trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicle_trip_details.html#issue-2.-live-location-is-missing",
+    "href": "bmtc/apis/vehicle_trip_details.html#issue-2.-live-location-is-missing",
+    "title": "4. Vehicle trip details",
+    "section": "Issue 2. Live location is missing",
+    "text": "Issue 2. Live location is missing\nLive location was empty for about 2.5% of vehicles (185 out of 7,247 vehicles) when run on 2025-09-17. Ex: Vehicle ID 28622 with registration number KA01AR4181.\n{\n    \"RouteDetails\": [],\n    \"LiveLocation\": [],\n    \"Message\": \"No Records Found\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 0,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "4. Vehicle trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/routes.html",
+    "href": "bmtc/apis/routes.html",
+    "title": "1. Routes",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchRoute_v2' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  -H 'lan: en' \\\n  --data-raw '{\"routetext\":\"210\"}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "1. Routes"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/routes.html#sample-request",
+    "href": "bmtc/apis/routes.html#sample-request",
+    "title": "1. Routes",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchRoute_v2' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  -H 'lan: en' \\\n  --data-raw '{\"routetext\":\"210\"}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "1. Routes"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/routes.html#sample-response",
+    "href": "bmtc/apis/routes.html#sample-response",
+    "title": "1. Routes",
+    "section": "Sample response",
+    "text": "Sample response\n{\n    \"data\": [\n        {\n            \"union_rowno\": 2,\n            \"row\": 1,\n            \"routeno\": \"210-A\",\n            \"responsecode\": 200,\n            \"routeparentid\": 7426\n        },\n        {\n            \"union_rowno\": 2,\n            \"row\": 3,\n            \"routeno\": \"210-AA\",\n            \"responsecode\": 200,\n            \"routeparentid\": 7427\n        }\n    ],\n    \"Message\": \"Success\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 53,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "1. Routes"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Traffic Data Bengaluru",
+    "section": "",
+    "text": "# Clone the repository.\ngit clone https://github.com/traffic-kowshik/traffic-data-bengaluru.git\ncd traffic-data-bengaluru\n\n# Create a virtual environment and install the required packages.\npython3 -m venv .venv\nsource .venv/bin/activate\npip install --upgrade pip\npip install -e .\n\n# Fetch routes from BMTC.\ncd traffic-data-bengaluru\npython -m cli bmtc_fetch_routes",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "index.html#quickstart",
+    "href": "index.html#quickstart",
+    "title": "Traffic Data Bengaluru",
+    "section": "",
+    "text": "# Clone the repository.\ngit clone https://github.com/traffic-kowshik/traffic-data-bengaluru.git\ncd traffic-data-bengaluru\n\n# Create a virtual environment and install the required packages.\npython3 -m venv .venv\nsource .venv/bin/activate\npip install --upgrade pip\npip install -e .\n\n# Fetch routes from BMTC.\ncd traffic-data-bengaluru\npython -m cli bmtc_fetch_routes",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "Traffic Data Bengaluru",
+    "section": "Developer Guide",
+    "text": "Developer Guide\n# Compile to have changes applied to the package.\nnbdev_prepare\n\n# Preview the changes in the browser.\nnbdev_preview",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "Utils",
+    "section": "",
+    "text": "source\n\nget_repository_directory\n\n get_repository_directory ()\n\n\nsource\n\n\nget_data_directory\n\n get_data_directory ()\n\n\nsource\n\n\nget_latest_directory\n\n get_latest_directory (directory:pathlib.Path)\n\nReturn the latest directory, sorting by name for a given directory.\n\nsource\n\n\nread_file\n\n read_file (filepath:pathlib.Path, format:str='json')\n\nRead a file in either JSON or CSV format and return its contents.",
+    "crumbs": [
+      "Utils"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/route_points.html",
+    "href": "bmtc/apis/route_points.html",
+    "title": "2. Route Points",
+    "section": "",
+    "text": "curl -X POST 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/RoutePoints' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  -d '{\"routeid\":3796}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "2. Route Points"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/route_points.html#sample-request",
+    "href": "bmtc/apis/route_points.html#sample-request",
+    "title": "2. Route Points",
+    "section": "",
+    "text": "curl -X POST 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/RoutePoints' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  -d '{\"routeid\":3796}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "2. Route Points"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/route_points.html#sample-response",
+    "href": "bmtc/apis/route_points.html#sample-response",
+    "title": "2. Route Points",
+    "section": "Sample response",
+    "text": "Sample response\n{\n    \"data\": [\n        {\n            \"latitude\": \"12.97751\",\n            \"longitude\": \"77.57141\",\n            \"responsecode\": 200\n        },\n        {\n            \"latitude\": \"12.97749\",\n            \"longitude\": \"77.57098\",\n            \"responsecode\": 200\n        },\n        {\n            \"latitude\": \"12.905319\",\n            \"longitude\": \"77.543217\",\n            \"responsecode\": 200\n        },\n        {\n            \"latitude\": \"12.905319\",\n            \"longitude\": \"77.543217\",\n            \"responsecode\": 200\n        }\n    ],\n    \"Message\": \"Success\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 560,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "2. Route Points"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicles.html",
+    "href": "bmtc/apis/vehicles.html",
+    "title": "3. Vehicles",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/ListVehicles' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  --data-raw '{\"vehicleRegNo\":\"0007\"}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "3. Vehicles"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicles.html#sample-request",
+    "href": "bmtc/apis/vehicles.html#sample-request",
+    "title": "3. Vehicles",
+    "section": "",
+    "text": "curl 'https://bmtcmobileapi.karnataka.gov.in/WebAPI/ListVehicles' \\\n  -H 'Content-Type: application/json' \\\n  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \\\n  --data-raw '{\"vehicleRegNo\":\"0007\"}'",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "3. Vehicles"
+    ]
+  },
+  {
+    "objectID": "bmtc/apis/vehicles.html#sample-response",
+    "href": "bmtc/apis/vehicles.html#sample-response",
+    "title": "3. Vehicles",
+    "section": "Sample response",
+    "text": "Sample response\n{\n    \"data\": [\n        {\n            \"vehicleid\": 19100,\n            \"vehicleregno\": \"KA53F0007\",\n            \"responsecode\": 200\n        },\n        {\n            \"vehicleid\": 18830,\n            \"vehicleregno\": \"KA57F0007\",\n            \"responsecode\": 200\n        }\n    ],\n    \"Message\": \"Success\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 2,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "apis",
+      "3. Vehicles"
+    ]
+  }
+]
