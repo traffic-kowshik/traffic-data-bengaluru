@@ -20,7 +20,7 @@ echo "Using gsutil at: $GSUTIL"
 
 # Upload: local -> cloud
 echo "Uploading data to Google Cloud Storage..."
-"$GSUTIL" -m rsync -r "$data_dir/" "$cloud_dir" >> "$log_dir/upload.log" 2>&1 || {
+"$GSUTIL" -m rsync -r -x ".*/cleaned/.*" "$data_dir/" "$cloud_dir" >> "$log_dir/upload.log" 2>&1 || {
     echo "gsutil upload failed" >&2
     exit 1
 }
