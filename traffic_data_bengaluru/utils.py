@@ -27,10 +27,11 @@ def get_data_directory():
 
 # %% ../nbs/utils.ipynb 13
 def get_latest_directory(directory: Path):
-    "Return the latest directory, sorting by name for a given directory."
-    latest = (directory 
-        .ls() 
-        .filter(lambda f: not f.name.startswith('.')) 
+    "Return the latest subdirectory, sorting by name for a given directory. Only returns directories, not files."
+    latest = (
+        directory
+        .ls()
+        .filter(lambda f: not f.name.startswith('.') and f.is_dir())
         .sorted(key=lambda f: f.name)[-1]
     )
     return latest
