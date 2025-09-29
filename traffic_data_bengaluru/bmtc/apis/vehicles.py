@@ -89,6 +89,4 @@ def task_fetch_vehicles(data_directory: Path):
 
 # %% ../../../nbs/bmtc/apis/03_vehicles.ipynb 22
 def get_vehicles(data_directory: Path):
-    filepath = get_latest_directory(data_directory / "cleaned" / "vehicles")
-    vehicles = pd.read_csv(filepath)
-    return vehicles
+    return process_vehicles(read_file(extract_file(get_latest_file(data_directory / 'raw' / 'vehicles'))))
