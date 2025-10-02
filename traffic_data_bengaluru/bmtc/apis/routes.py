@@ -11,7 +11,6 @@ import json
 import time
 import datetime
 from tqdm import tqdm
-import geojson
 
 import requests
 import pandas as pd
@@ -55,7 +54,7 @@ def fetch_routes(pattern: str = "", sleep_duration: float = 0.1):
             routes += fetch_routes(pattern)
         return routes
 
-# %% ../../../nbs/bmtc/apis/01_routes.ipynb 15
+# %% ../../../nbs/bmtc/apis/01_routes.ipynb 16
 def process_routes(routes):
     """Process and clean route data, returning a DataFrame with `route_id` and `route_number`."""
     df_routes = pd.DataFrame(routes)
@@ -63,14 +62,15 @@ def process_routes(routes):
 
     df_routes.rename(columns = {'routeno': 'route_number', 'routeparentid': 'route_id'}, inplace=True)
     df_routes = df_routes.sort_values(by='route_id').reset_index(drop=True)
+    
     columns = ['route_id', 'route_number']
     return df_routes[columns]
 
-# %% ../../../nbs/bmtc/apis/01_routes.ipynb 18
+# %% ../../../nbs/bmtc/apis/01_routes.ipynb 20
 def task_fetch_routes(data_directory):
-    filename = f'{str(int(datetime.datetime.now().timestamp()))}'
-
     logger.info("Fetching routes ...")
+    
+    filename = f'{str(int(datetime.datetime.now().timestamp()))}'    
     routes = fetch_routes()
 
     filepath = data_directory / 'raw' / 'routes' / f'{filename}.json'
@@ -87,8 +87,8 @@ def task_fetch_routes(data_directory):
     df_routes.to_csv(filepath, index=False)
     logger.info(f"Processed routes saved successfully to {filepath}")
 
-# %% ../../../nbs/bmtc/apis/01_routes.ipynb 21
+# %% ../../../nbs/bmtc/apis/01_routes.ipynb 24
 def get_routes(data_directory: Path):
-    filepath = get_latest_directory(data_directory / "cleaned" / "routes")
-    routes = pd.read_csv(filepath)
+    filepath = extract_file(get_latest_file(data_directory / "cleaned" / "routes"))
+    routes = pd.read_csv(filepath).drop_duplicates(subset=["route_id"])
     return routes
