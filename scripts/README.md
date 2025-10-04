@@ -1,7 +1,1 @@
-# Scripts
-
-## crontab
-
-```bash
-
-```
+# README
