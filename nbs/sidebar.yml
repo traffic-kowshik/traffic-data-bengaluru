@@ -3,11 +3,12 @@ website:
     contents:
       - index.ipynb
       - utils.ipynb
-      - section: BMTC
+      - section: bmtc
         contents:
-          - section: APIs
+          - section: apis
             contents:
               - bmtc/apis/01_routes.ipynb
               - bmtc/apis/02_route_points.ipynb
               - bmtc/apis/03_vehicles.ipynb
               - bmtc/apis/04_vehicle_trip_details.ipynb
+              - bmtc/apis/05_time_tables.ipynb
