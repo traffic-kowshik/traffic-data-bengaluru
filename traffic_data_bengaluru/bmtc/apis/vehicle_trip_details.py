@@ -96,7 +96,7 @@ def task_fetch_vehicle_trip_details(data_directory: Path):
     directory.mkdir(exist_ok=True, parents=True)
 
     logger.info("Fetching vehicle trip details ...")
-    df_vehicles = get_vehicles(data_directory).head(10)
+    df_vehicles = get_vehicles(data_directory)
     for index, row in tqdm(df_vehicles.iterrows(), total = df_vehicles.shape[0], desc = 'Fetching vehicle trip details'):
         trip_details = fetch_vehicle_trip_details(vehicle_id = row['vehicle_id']) 
         with open(directory / f"{row['vehicle_id']}.json", "w") as f:
