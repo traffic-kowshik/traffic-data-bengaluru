@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/time_tables.html</loc>
+    <lastmod>2025-10-04T14:29:21.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/route_details.html</loc>
+    <lastmod>2025-10-04T14:29:21.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/route_points.html</loc>
+    <lastmod>2025-10-04T14:29:21.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/index.html</loc>
+    <lastmod>2025-10-04T14:29:20.797Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/utils.html</loc>
+    <lastmod>2025-10-04T14:29:21.318Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/trip_details.html</loc>
+    <lastmod>2025-10-04T14:29:21.428Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/routes.html</loc>
+    <lastmod>2025-10-04T14:29:21.348Z</lastmod>
+  </url>
+  <url>
+    <loc>https://traffic-kowshik.github.io/traffic-data-bengaluru/bmtc/apis/vehicles.html</loc>
+    <lastmod>2025-10-04T14:29:21.336Z</lastmod>
+  </url>
+</urlset>
