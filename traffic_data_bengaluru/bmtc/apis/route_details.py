@@ -84,12 +84,13 @@ def task_fetch_route_details(data_directory: Path):
     logger.info("Fetching route details ...")
     df_routes = get_routes(data_directory)
     for index, row in tqdm(df_routes.iterrows(), total = df_routes.shape[0], desc = 'Fetching route details'):
-        route_details = fetch_route_details(trip_id = row['vehicle_id']) 
-        with open(directory / f"{row['vehicle_id']}.json", "w") as f:
+        route_details = fetch_route_details(route_id = row['route_id']) 
+        with open(directory / f"{row['route_id']}.json", "w") as f:
             json.dump(route_details, f, indent = 4)
 
     tar_path = directory.with_suffix('.tar.gz')
     with tarfile.open(tar_path, "w:gz") as tar:
         tar.add(directory, arcname=directory.name)
-
     logger.info(f"Compressed {directory} into {tar_path}")
+    
+    # TODO: Delete the raw json files after successfully creating the compressed file.
