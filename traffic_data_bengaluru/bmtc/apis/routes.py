@@ -87,6 +87,4 @@ def task_fetch_routes(data_directory):
 
 # %% ../../../nbs/bmtc/apis/01_routes.ipynb 22
 def get_routes(data_directory: Path):
-    filepath = extract_file(get_latest_file(data_directory / "cleaned" / "routes"))
-    routes = pd.read_csv(filepath).drop_duplicates(subset=["route_id"])
-    return routes
+    return process_routes(read_file(extract_file(get_latest_file(data_directory / 'raw' / 'routes'))))
