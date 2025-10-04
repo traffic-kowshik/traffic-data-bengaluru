@@ -8,7 +8,7 @@ from nbdev.config import get_config
 from traffic_data_bengaluru.bmtc.apis.routes import task_fetch_routes
 from traffic_data_bengaluru.bmtc.apis.vehicles import task_fetch_vehicles
 from traffic_data_bengaluru.bmtc.apis.route_points import task_fetch_route_points
-from traffic_data_bengaluru.bmtc.apis.vehicle_trip_details import task_fetch_vehicle_trip_details
+from traffic_data_bengaluru.bmtc.apis.trip_details import task_fetch_trip_details
 
 import logging
 logging.basicConfig(
@@ -30,8 +30,8 @@ def bmtc_fetch_vehicles():
 def bmtc_fetch_route_points():
     task_fetch_route_points(data_directory=data_directory)
 
-def bmtc_fetch_vehicle_trip_details():
-    task_fetch_vehicle_trip_details(data_directory=data_directory)
+def bmtc_fetch_trip_details():
+    task_fetch_trip_details(data_directory=data_directory)
 
 
 if __name__ == "__main__":
@@ -39,5 +39,5 @@ if __name__ == "__main__":
         "bmtc_fetch_routes": bmtc_fetch_routes,
         "bmtc_fetch_vehicles": bmtc_fetch_vehicles,
         "bmtc_fetch_route_points": bmtc_fetch_route_points,
-        "bmtc_fetch_vehicle_trip_details": bmtc_fetch_vehicle_trip_details
+        "bmtc_fetch_trip_details": bmtc_fetch_trip_details
     })

@@ -10,5 +10,6 @@ website:
               - bmtc/apis/01_routes.ipynb
               - bmtc/apis/02_route_points.ipynb
               - bmtc/apis/03_vehicles.ipynb
-              - bmtc/apis/04_vehicle_trip_details.ipynb
+              - bmtc/apis/04_trip_details.ipynb
               - bmtc/apis/05_time_tables.ipynb
+              - bmtc/apis/06_route_details.ipynb
