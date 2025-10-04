@@ -1,0 +1,7 @@
+# Once a week on Wednesday, fetch routes, vehicles and route points.
+00 11 * * 3 /home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_routes.sh
+30 11 * * 3 /home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_vehicles.sh
+00 12 * * 3 /home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_route_points.sh
+
+# Trip details once in a morning and once in the evening.
+00 09,18 * * * /home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_vehicle_trip_details.sh
