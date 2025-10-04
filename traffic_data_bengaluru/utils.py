@@ -68,23 +68,27 @@ def extract_file(filepath: Path):
 
 # %% ../nbs/utils.ipynb 19
 def extract_files(filepath: Path):
-
-    # When the filepath is not compressed, return files in the directory.
+    
+    # When the filepath is not compressed, return only files in the directory.
     if filepath.suffix != ".gz":
-        return filepath.ls()
+        return [p for p in filepath.ls() if p.is_file()]
 
     extract_dir = filepath.parent
     extracted_files = []
 
     with tarfile.open(filepath, "r:gz") as tar:
         for member in tar.getmembers():
-            if Path(member.name).name.startswith("._"):
+            if not member.isfile():  # skip directories
+                continue
+            if Path(member.name).name.startswith("._"):  # skip macOS junk
                 continue
             tar.extract(member, path=extract_dir)
             extracted_files.append(extract_dir / member.name)
 
+    # Remove duplicate macOS junk files if any slipped through
     for du_file in extract_dir.glob("._*"):
         du_file.unlink()
+
     return extracted_files
 
 # %% ../nbs/utils.ipynb 23
