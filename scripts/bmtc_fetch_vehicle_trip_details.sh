@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PROJECT_DIR=/home/traffic_kowshik/code/traffic-kowshik/traffic-data-bengaluru
+PROJECT_DIR="$HOME/code/traffic-kowshik/traffic-data-bengaluru"
 LOG_DIR=$PROJECT_DIR/logs
 VENV=$PROJECT_DIR/.venv
 
