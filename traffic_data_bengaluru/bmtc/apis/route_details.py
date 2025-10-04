@@ -3,7 +3,7 @@
 # %% auto 0
 __all__ = ['logger', 'fetch_route_details', 'extract_route_details', 'extract_map_data']
 
-# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 9
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 7
 import json
 import time
 from tqdm import tqdm
@@ -15,7 +15,7 @@ pd.set_option('display.max_columns', None)
 from ...utils import *
 from .vehicles import get_vehicles
 
-# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 10
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 8
 import logging
 logging.basicConfig(
     level=logging.INFO,
@@ -23,7 +23,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 13
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 11
 def fetch_route_details(route_id: int, sleep_duration: float = 0.1):
     """Fetch route details for a given route ID from the BMTC API."""
     time.sleep(sleep_duration)
@@ -46,7 +46,7 @@ def fetch_route_details(route_id: int, sleep_duration: float = 0.1):
         print("Response text:", getattr(e.response, "text", None))
         return None
 
-# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 16
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 14
 def extract_route_details(route_details):
     details = []
     directions = ['up', 'down']
@@ -60,7 +60,7 @@ def extract_route_details(route_details):
     df_details = pd.DataFrame(details)
     return df_details
 
-# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 19
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 17
 def extract_map_data(route_details):
     map_data = []
     directions = ['up', 'down']
