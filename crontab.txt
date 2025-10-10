@@ -5,3 +5,6 @@
 
 # Trip details once in a morning and once in the evening.
 00 09,18 * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_vehicle_trip_details.sh
+
+# Route details v2, fetch routes with lots of vehicles every minute
+* 8-21 * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_vehicle_route_details_v2.sh
