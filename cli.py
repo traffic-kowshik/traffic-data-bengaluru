@@ -9,7 +9,7 @@ from traffic_data_bengaluru.bmtc.apis.routes import task_fetch_routes
 from traffic_data_bengaluru.bmtc.apis.vehicles import task_fetch_vehicles
 from traffic_data_bengaluru.bmtc.apis.route_points import task_fetch_route_points
 from traffic_data_bengaluru.bmtc.apis.trip_details import task_fetch_trip_details
-from traffic_data_bengaluru.bmtc.apis.route_details import task_fetch_route_details
+from traffic_data_bengaluru.bmtc.apis.route_details import task_fetch_route_details, task_fetch_route_details_v2
 
 import logging
 logging.basicConfig(
@@ -34,10 +34,11 @@ def bmtc_fetch_route_points():
 def bmtc_fetch_trip_details():
     task_fetch_trip_details(data_directory=data_directory)
 
-
 def bmtc_fetch_route_details():
     task_fetch_route_details(data_directory=data_directory)
 
+def bmtc_fetch_route_details_v2():
+    task_fetch_route_details_v2(data_directory=data_directory)
 
 if __name__ == "__main__":
     fire.Fire({
@@ -45,5 +46,6 @@ if __name__ == "__main__":
         "bmtc_fetch_vehicles": bmtc_fetch_vehicles,
         "bmtc_fetch_route_points": bmtc_fetch_route_points,
         "bmtc_fetch_trip_details": bmtc_fetch_trip_details,
-        "bmtc_fetch_route_details": bmtc_fetch_route_details
+        "bmtc_fetch_route_details": bmtc_fetch_route_details,
+        "bmtc_fetch_route_details_v2": bmtc_fetch_route_details_v2
     })

@@ -2,7 +2,7 @@
 
 # %% auto 0
 __all__ = ['logger', 'fetch_route_details', 'extract_route_details', 'extract_map_data', 'task_fetch_route_details',
-           'get_route_details', 'get_map_data']
+           'get_route_details', 'get_map_data', 'get_vehicle_count', 'task_fetch_route_details_v2']
 
 # %% ../../../nbs/bmtc/apis/06_route_details.ipynb 7
 import json
@@ -10,7 +10,7 @@ import datetime
 import time
 import tarfile
 
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 import requests
 import pandas as pd
@@ -100,7 +100,7 @@ def task_fetch_route_details(data_directory: Path):
 def get_route_details(data_directory: Path):
     dfs = []
     directory = get_latest_directory(data_directory / 'raw' / 'route_details')
-    for file in extract_files(directory):
+    for file in tqdm(extract_files(directory), total = len(extract_files(directory))):
         dfs.append(extract_route_details(read_file(file)))
     df_route_details = pd.concat(dfs, ignore_index=True)
     df_route_details = df_route_details.drop_duplicates().reset_index(drop = True)
@@ -110,8 +110,36 @@ def get_route_details(data_directory: Path):
 def get_map_data(data_directory: Path):
     dfs = []
     files = extract_files(get_latest_file(data_directory / 'raw' / 'route_details'))
-    for file in files:
+    for file in tqdm(files, total = len(files)):
         dfs.append(extract_map_data(read_file(file)))
     df_map_data = pd.concat(dfs, ignore_index=True)
     df_map_data = df_map_data.drop_duplicates().reset_index(drop = True)
     return df_map_data
+
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 29
+def get_vehicle_count(route_details):
+    """Return total number of vehicles in route for both directions."""
+    vehicles_count = 0
+    directions = ['up', 'down']
+    for direction in directions:
+        if direction in route_details:
+            vehicles_count += len(route_details[direction]['mapData'])
+    return vehicles_count
+
+# %% ../../../nbs/bmtc/apis/06_route_details.ipynb 36
+def task_fetch_route_details_v2(data_directory: Path):
+    """v2 of fetch route details, routes with the most vehicles."""
+    logger.info("Fetching route details v2 ...")
+
+    route_ids = [1066, 1100, 995, 1558, 1659, 1387, 1508, 1086, 1133, 1732, 1507, 1324, 1705, 1109, 1419, 8543, 1173, 2802, 1164, 2254]
+    for route_id in tqdm(route_ids, desc = 'Fetching route details v2'):
+
+        # Create a directory for every route.
+        directory = data_directory / 'raw' / 'route_details_v2' / str(route_id)
+        directory.mkdir(exist_ok=True, parents=True)
+
+        route_details = fetch_route_details(route_id = route_id)
+        filename = f'{str(int(datetime.datetime.now().timestamp()))}'
+        filepath = directory / f'{filename}.json'
+        with open(filepath, "w") as f:
+            json.dump(route_details, f, indent = 4)
