@@ -14,7 +14,7 @@ import requests
 import pandas as pd
 from fastcore.all import Path
 from ..utils import *
-from ..bmtc.apis.route_details import *
+from ..bmtc.route_details import *
 from nbdev.config import get_config
 
 # %% ../../nbs/traffic/01_bmtc.ipynb 5

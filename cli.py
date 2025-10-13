@@ -5,11 +5,11 @@ import fire
 from tqdm import tqdm
 from nbdev.config import get_config
 
-from traffic_data_bengaluru.bmtc.apis.routes import task_fetch_routes
-from traffic_data_bengaluru.bmtc.apis.vehicles import task_fetch_vehicles
-from traffic_data_bengaluru.bmtc.apis.route_points import task_fetch_route_points
-from traffic_data_bengaluru.bmtc.apis.trip_details import task_fetch_trip_details
-from traffic_data_bengaluru.bmtc.apis.route_details import task_fetch_route_details, task_fetch_route_details_v2
+from traffic_data_bengaluru.bmtc.routes import task_fetch_routes
+from traffic_data_bengaluru.bmtc.vehicles import task_fetch_vehicles
+from traffic_data_bengaluru.bmtc.route_points import task_fetch_route_points
+from traffic_data_bengaluru.bmtc.trip_details import task_fetch_trip_details
+from traffic_data_bengaluru.bmtc.route_details import task_fetch_route_details, task_fetch_route_details_v2
 
 import logging
 logging.basicConfig(
