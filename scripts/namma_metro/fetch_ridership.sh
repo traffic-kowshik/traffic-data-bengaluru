@@ -10,8 +10,8 @@ source $VENV/bin/activate
 mkdir -p $LOG_DIR
 cd $PROJECT_DIR
 
-echo "=== Run $(date '+%Y-%m-%d %H:%M:%S') ===" >> $LOG_DIR/namma_metro_fetch_ridership.log
-$VENV/bin/python -m cli namma_metro_fetch_ridership >> $LOG_DIR/namma_metro_fetch_ridership.log 2>&1
+echo "=== Run $(date '+%Y-%m-%d %H:%M:%S') ===" >> $LOG_DIR/fetch_ridership.log
+$VENV/bin/python -m cli namma_metro_fetch_ridership >> $LOG_DIR/fetch_ridership.log 2>&1
 
-tail -n 100 $LOG_DIR/namma_metro_fetch_ridership.log > $LOG_DIR/namma_metro_fetch_ridership.tmp
-mv $LOG_DIR/namma_metro_fetch_ridership.tmp $LOG_DIR/namma_metro_fetch_ridership.log
+tail -n 100 $LOG_DIR/fetch_ridership.log > $LOG_DIR/fetch_ridership.tmp
+mv $LOG_DIR/fetch_ridership.tmp $LOG_DIR/fetch_ridership.log
