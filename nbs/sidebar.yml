@@ -5,11 +5,13 @@ website:
       - utils.ipynb
       - section: bmtc
         contents:
-          - section: apis
-            contents:
-              - bmtc/apis/01_routes.ipynb
-              - bmtc/apis/02_route_points.ipynb
-              - bmtc/apis/03_vehicles.ipynb
-              - bmtc/apis/04_trip_details.ipynb
-              - bmtc/apis/05_time_tables.ipynb
-              - bmtc/apis/06_route_details.ipynb
+          - bmtc/01_routes.ipynb
+          - bmtc/02_route_points.ipynb
+          - bmtc/03_vehicles.ipynb
+          - bmtc/04_trip_details.ipynb
+          - bmtc/05_time_tables.ipynb
+          - bmtc/06_route_details.ipynb
+          - bmtc/07_traffic.ipynb
+      - section: namma_metro
+        contents:
+          - namma_metro/01_ridership.ipynb
