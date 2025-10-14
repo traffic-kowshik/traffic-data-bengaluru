@@ -1,10 +1,8 @@
-# Once a week on Wednesday, fetch routes, vehicles and route points.
+# BMTC
 00 11 * * 3 $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_routes.sh
 30 11 * * 3 $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_vehicles.sh
 00 12 * * 3 $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_route_points.sh
+* * * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_route_details_v2.sh
 
-# Trip details once in a morning and once in the evening.
-00 09,18 * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_trip_details.sh
-
-# Route details v2, fetch routes with lots of vehicles every minute
-* 8-21 * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/bmtc_fetch_route_details_v2.sh
+# Namma Metro
+52 * * * * $HOME/code/traffic-kowshik/traffic-data-bengaluru/scripts/namma_metro/fetch_ridership.sh
