@@ -30,7 +30,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # %% ../../nbs/bmtc/06_route_details.ipynb 11
-def fetch_route_details(route_id: int, sleep_duration: float = 0.1):
+def fetch_route_details(route_id: int, sleep_duration: float = 0.5):
     """Fetch route details for a given route ID from the BMTC API."""
     time.sleep(sleep_duration)
     url = "https://bmtcmobileapi.karnataka.gov.in/WebAPI/SearchByRouteDetails_v4"

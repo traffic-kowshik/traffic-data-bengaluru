@@ -16,4 +16,5 @@ $VENV/bin/python -m cli bmtc_fetch_route_details_v2 >> $LOG_DIR/bmtc_fetch_route
 tail -n 100 $LOG_DIR/bmtc_fetch_route_details_v2.log > $LOG_DIR/bmtc_fetch_route_details_v2.tmp
 mv $LOG_DIR/bmtc_fetch_route_details_v2.tmp $LOG_DIR/bmtc_fetch_route_details_v2.log
 
-find "$PROJECT_DIR/data/bmtc/raw/route_details_v2" -type f -name "*.json" -exec gzip {} \;
+find "$PROJECT_DIR/data/bmtc/raw/route_details_v2" -type f -name "*.json" -mmin +5 -exec gzip {} \;
+
