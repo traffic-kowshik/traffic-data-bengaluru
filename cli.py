@@ -20,6 +20,9 @@ logger = logging.getLogger(__name__)
 
 repo_directory = Path(get_config().nbs_path).parent
 
+data_directory = repo_directory / "data"
+data_directory.mkdir(exist_ok=True, parents=True)
+
 def bmtc_fetch_routes():
     data_directory = repo_directory / "data" / "bmtc"
     data_directory.mkdir(exist_ok=True, parents=True)
@@ -51,8 +54,6 @@ def bmtc_fetch_route_details_v2():
     task_fetch_route_details_v2(data_directory=data_directory)
 
 def namma_metro_fetch_ridership():
-    data_directory = repo_directory / "data" / "namma_metro"
-    data_directory.mkdir(exist_ok=True, parents=True)
     task_fetch_ridership(data_directory=data_directory)
 
 if __name__ == "__main__":

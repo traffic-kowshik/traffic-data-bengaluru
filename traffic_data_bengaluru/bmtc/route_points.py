@@ -17,7 +17,7 @@ from fastcore.all import Path
 from nbdev.config import get_config
 
 from ..utils import *
-from .apis.routes import get_routes
+from .routes import get_routes
 
 # %% ../../nbs/bmtc/02_route_points.ipynb 5
 import logging
