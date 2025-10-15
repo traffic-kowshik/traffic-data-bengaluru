@@ -16,4 +16,5 @@ router = APIRouter(prefix="/metro", tags=["Namma Metro"])
 @router.get("/ridership")
 def ridership():
     data_directory = get_data_directory()
-    return get_ridership(data_directory)
+    ridership = get_ridership(data_directory)
+    return ridership.to_dict(orient="records")

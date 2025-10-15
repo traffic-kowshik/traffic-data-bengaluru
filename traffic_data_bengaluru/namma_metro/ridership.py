@@ -69,7 +69,7 @@ def get_ridership(data_directory: Path):
     df = pd.DataFrame(records)
     df.columns = [inflection.underscore(col) for col in df.columns]
 
-    df['ridership_date'] = pd.to_datetime(df['ridership_date'], format='%d-%m-%Y')
+    df['ridership_date'] = pd.to_datetime(df['ridership_date'], format='%d-%m-%Y').dt.date
     df = df.sort_values(by='ridership_date', ascending=False)
     
     cols = ['ridership_date'] + [col for col in df.columns if col != 'ridership_date']
