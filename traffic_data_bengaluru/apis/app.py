@@ -8,9 +8,9 @@ from fastapi import FastAPI
 from .namma_metro import router as metro_router
 
 # %% ../../nbs/apis/01_app.ipynb 3
-app = FastAPI(title="Namma Traffic API")
+app = FastAPI(title="Traffic Data Bengaluru API")
 app.include_router(metro_router)
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Namma Traffic API"}
+    return {"message": "Welcome to Traffic Data Bengaluru API"}
