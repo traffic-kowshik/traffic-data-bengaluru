@@ -83,7 +83,6 @@ termcolor==3.1.0
 toml==0.10.2
 tornado==6.5.2
 tqdm==4.67.1
--e git+ssh://git@github.com/traffic-kowshik/traffic-data-bengaluru.git@52e315ee530c90870cb012dc80abd35e48a6f013#egg=traffic_data_bengaluru
 traitlets==5.14.3
 typing-inspection==0.4.2
 typing_extensions==4.15.0
