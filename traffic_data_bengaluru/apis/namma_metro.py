@@ -4,6 +4,8 @@
 __all__ = ['router', 'ridership']
 
 # %% ../../nbs/apis/02_namma_metro.ipynb 4
+import pandas as pd
+
 from fastapi import APIRouter
 from fastapi import FastAPI
 
@@ -17,4 +19,6 @@ router = APIRouter(prefix="/metro", tags=["Namma Metro"])
 def ridership():
     data_directory = get_data_directory()
     ridership = get_ridership(data_directory)
+
+    ridership['ridership_date'] = pd.to_datetime(ridership['ridership_date']).dt.strftime('%Y-%m-%d (%a)')
     return ridership.to_dict(orient="records")
