@@ -64,7 +64,7 @@ styled_df = st.session_state.df.style.background_gradient(
     subset=st.session_state.df.select_dtypes(include='number').columns
 )
 
-st.dataframe(styled_df, use_container_width=True)
+st.dataframe(styled_df, width="stretch")
 
 
 st.divider(width="stretch")
