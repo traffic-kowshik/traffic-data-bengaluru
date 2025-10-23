@@ -25,5 +25,11 @@ if "df" not in st.session_state:
 if st.button("Refresh"):
     st.session_state.df = fetch_data()
 
-# Display the table
-st.dataframe(st.session_state.df)
+# Apply background gradient to numeric columns
+styled_df = st.session_state.df.style.background_gradient(
+    cmap="RdYlGn",
+    axis=0,
+    subset=st.session_state.df.select_dtypes(include='number').columns
+)
+
+st.dataframe(styled_df, use_container_width=True)
