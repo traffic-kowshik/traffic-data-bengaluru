@@ -1,4 +1,5 @@
 import os
+
 import requests
 import streamlit as st
 import pandas as pd
@@ -56,12 +57,26 @@ st.altair_chart(chart, use_container_width=True)
 
 st.divider(width="stretch")
 
+df = st.session_state.df.copy()
+numeric_cols = df.select_dtypes(include="number").columns
 
-# Daily ridership table
-styled_df = st.session_state.df.style.background_gradient(
-    cmap="RdYlGn",
-    axis=0,
-    subset=st.session_state.df.select_dtypes(include='number').columns
+show_percent = st.toggle("Show Percentage (%)", value=False)
+
+if show_percent:
+    df[numeric_cols] = df[numeric_cols].apply(lambda x: (x / x.max()) * 100)
+    df[numeric_cols] = df[numeric_cols].round(1)
+
+def smart_format(x):
+    if pd.isna(x):
+        return ""
+    if x == int(x):
+        return f"{int(x):,}"
+    return f"{x:.1f}"
+
+styled_df = (
+    df.style
+    .background_gradient(cmap="RdYlGn", axis=0, subset=numeric_cols)
+    .format(smart_format, subset=numeric_cols)
 )
 
 st.dataframe(styled_df, width="stretch")
