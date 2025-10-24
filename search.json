@@ -1,0 +1,185 @@
+[
+  {
+    "objectID": "bmtc/vehicles.html#sample-response",
+    "href": "bmtc/vehicles.html#sample-response",
+    "title": "3. Vehicles",
+    "section": "Sample response",
+    "text": "Sample response\n{\n    \"data\": [\n        {\n            \"vehicleid\": 19100,\n            \"vehicleregno\": \"KA53F0007\",\n            \"responsecode\": 200\n        },\n        {\n            \"vehicleid\": 18830,\n            \"vehicleregno\": \"KA57F0007\",\n            \"responsecode\": 200\n        }\n    ],\n    \"Message\": \"Success\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 2,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "3. Vehicles"
+    ]
+  },
+  {
+    "objectID": "bmtc/routes.html",
+    "href": "bmtc/routes.html",
+    "title": "1. Routes",
+    "section": "",
+    "text": "Functions\n\nsource\n\nfetch_routes\n\n fetch_routes (pattern:str='', sleep_duration:float=0.1)\n\nFetches BMTC routes matching the given pattern, or all routes if pattern is empty.\n\nsource\n\n\nprocess_routes\n\n process_routes (routes)\n\nProcess and clean route data, returning a DataFrame with route_id and route_number.\n\nsource\n\n\ntask_fetch_routes\n\n task_fetch_routes (data_directory)\n\n\nsource\n\n\nget_routes\n\n get_routes (data_directory:pathlib.Path)",
+    "crumbs": [
+      "bmtc",
+      "1. Routes"
+    ]
+  },
+  {
+    "objectID": "bmtc/trip_details.html",
+    "href": "bmtc/trip_details.html",
+    "title": "4. Trip details",
+    "section": "",
+    "text": "tripid attribute exists in vehicle trip details API but does not exist in route details API. Ex: tripid = 71830930\n\n\n\nVehicles on some occassions are assigned to more than one route. Ex: Vehicle KA57F5808 is assigned to two routes, routeno = 210-NA and routeno = D33-PPLO.\n\"LiveLocation\": [\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"210-NA\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    },\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"D33-PPLO\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    }\n]\n\n\n\nLive location was empty for about 2.5% of vehicles (185 out of 7,247 vehicles) when run on 2025-09-17. Ex: Vehicle ID 28622 with registration number KA01AR4181.\n{\n    \"RouteDetails\": [],\n    \"LiveLocation\": [],\n    \"Message\": \"No Records Found\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 0,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "4. Trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/trip_details.html#issue-1.-vehicle-is-assigned-to-more-than-one-route",
+    "href": "bmtc/trip_details.html#issue-1.-vehicle-is-assigned-to-more-than-one-route",
+    "title": "4. Trip details",
+    "section": "",
+    "text": "Vehicles on some occassions are assigned to more than one route. Ex: Vehicle KA57F5808 is assigned to two routes, routeno = 210-NA and routeno = D33-PPLO.\n\"LiveLocation\": [\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"210-NA\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    },\n    {\n        \"latitude\": 12.909809,\n        \"longitude\": 77.536422,\n        \"location\": \"Depot-33 Poornapragna layout (Towards Depot-33 (Poornapragna layout))\",\n        \"lastrefreshon\": \"17-09-2025 23:19:34\",\n        \"nextstop\": null,\n        \"previousstop\": \"Arehalli (Towards Kengeri)\",\n        \"vehicleid\": 27211,\n        \"vehiclenumber\": \"KA57F5808\",\n        \"routeno\": \"D33-PPLO\",\n        \"servicetypeid\": 72,\n        \"servicetype\": \"Non AC/Ordinary\",\n        \"heading\": 210.18,\n        \"responsecode\": 200,\n        \"trip_status\": 1,\n        \"lastreceiveddatetimeflag\": 1\n    }\n]",
+    "crumbs": [
+      "bmtc",
+      "4. Trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/trip_details.html#issue-2.-live-location-is-missing",
+    "href": "bmtc/trip_details.html#issue-2.-live-location-is-missing",
+    "title": "4. Trip details",
+    "section": "",
+    "text": "Live location was empty for about 2.5% of vehicles (185 out of 7,247 vehicles) when run on 2025-09-17. Ex: Vehicle ID 28622 with registration number KA01AR4181.\n{\n    \"RouteDetails\": [],\n    \"LiveLocation\": [],\n    \"Message\": \"No Records Found\",\n    \"Issuccess\": true,\n    \"exception\": null,\n    \"RowCount\": 0,\n    \"responsecode\": 200\n}",
+    "crumbs": [
+      "bmtc",
+      "4. Trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/trip_details.html#dataset-1.-live-location",
+    "href": "bmtc/trip_details.html#dataset-1.-live-location",
+    "title": "4. Trip details",
+    "section": "Dataset 1. Live Location",
+    "text": "Dataset 1. Live Location\n\nsource\n\nextract_live_location\n\n extract_live_location (trip_details)\n\nExtract live location from trip details.\n\nsource\n\n\nget_live_locations\n\n get_live_locations (directory:pathlib.Path)\n\nExtract live location for all trip details in a directory.",
+    "crumbs": [
+      "bmtc",
+      "4. Trip details"
+    ]
+  },
+  {
+    "objectID": "bmtc/trip_details.html#dataset-2.-route-details",
+    "href": "bmtc/trip_details.html#dataset-2.-route-details",
+    "title": "4. Trip details",
+    "section": "Dataset 2. Route Details",
+    "text": "Dataset 2. Route Details\n\nsource\n\nextract_route_detail\n\n extract_route_detail (trip_detail)",
+    "crumbs": [
+      "bmtc",
+      "4. Trip details"
+    ]
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "Utils",
+    "section": "",
+    "text": "source\n\nget_repo_directory\n\n get_repo_directory ()\n\n\nsource\n\n\nget_data_directory\n\n get_data_directory ()\n\n\nsource\n\n\nget_latest_file\n\n get_latest_file (directory:pathlib.Path)\n\nReturn the latest file, sorting by name for a given directory. Only returns files, not directories.\n\nsource\n\n\nextract_file\n\n extract_file (filepath:pathlib.Path)\n\n\nsource\n\n\nextract_files\n\n extract_files (filepath:pathlib.Path)\n\n\nsource\n\n\nget_latest_directory\n\n get_latest_directory (directory:pathlib.Path)\n\nReturn the latest subdirectory, sorting by name for a given directory. Only returns directories, not files.\n\nsource\n\n\nread_file\n\n read_file (filepath:pathlib.Path, format:str='json')\n\nRead a file in either JSON or CSV format and return its contents.\n\nsource\n\n\nappend_to_file\n\n append_to_file (filepath:pathlib.Path, record:dict)\n\n\nsource\n\n\nextract_file_name\n\n extract_file_name (path:pathlib.Path)",
+    "crumbs": [
+      "Utils"
+    ]
+  },
+  {
+    "objectID": "apis/namma_metro.html",
+    "href": "apis/namma_metro.html",
+    "title": "2. Namma Metro",
+    "section": "",
+    "text": "source\n\nridership\n\n ridership ()",
+    "crumbs": [
+      "apis",
+      "2. Namma Metro"
+    ]
+  },
+  {
+    "objectID": "namma_metro/ridership.html",
+    "href": "namma_metro/ridership.html",
+    "title": "1. Ridership",
+    "section": "",
+    "text": "source\n\nfetch_ridership\n\n fetch_ridership (sleep_duration:float=0.1)\n\nFetch ridership data from the BMRC API.\n\nsource\n\n\ntask_fetch_ridership\n\n task_fetch_ridership (data_directory:pathlib.Path)\n\n\nsource\n\n\nget_ridership\n\n get_ridership (data_directory:pathlib.Path)",
+    "crumbs": [
+      "namma_metro",
+      "1. Ridership"
+    ]
+  },
+  {
+    "objectID": "apis/app.html",
+    "href": "apis/app.html",
+    "title": "01. App",
+    "section": "",
+    "text": "source\n\nroot\n\n root ()",
+    "crumbs": [
+      "apis",
+      "01. App"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Traffic Data Bengaluru",
+    "section": "",
+    "text": "# Clone the repository.\ngit clone https://github.com/traffic-kowshik/traffic-data-bengaluru.git\ncd traffic-data-bengaluru\n\n# Create a virtual environment and install the required packages.\npython3 -m venv .venv\nsource .venv/bin/activate\npip install --upgrade pip\npip install -e .\n\n# Fetch routes from BMTC.\ncd traffic-data-bengaluru\npython -m cli bmtc_fetch_routes",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "index.html#quickstart",
+    "href": "index.html#quickstart",
+    "title": "Traffic Data Bengaluru",
+    "section": "",
+    "text": "# Clone the repository.\ngit clone https://github.com/traffic-kowshik/traffic-data-bengaluru.git\ncd traffic-data-bengaluru\n\n# Create a virtual environment and install the required packages.\npython3 -m venv .venv\nsource .venv/bin/activate\npip install --upgrade pip\npip install -e .\n\n# Fetch routes from BMTC.\ncd traffic-data-bengaluru\npython -m cli bmtc_fetch_routes",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "Traffic Data Bengaluru",
+    "section": "Developer Guide",
+    "text": "Developer Guide\n# Compile to have changes applied to the package.\nnbdev_prepare\n\n# Preview the changes in the browser.\nnbdev_preview",
+    "crumbs": [
+      "Traffic Data Bengaluru"
+    ]
+  },
+  {
+    "objectID": "bmtc/route_points.html",
+    "href": "bmtc/route_points.html",
+    "title": "2. Route Points",
+    "section": "",
+    "text": "Functions\n\nsource\n\nfetch_route_points\n\n fetch_route_points (route_id:str, sleep_duration:float=0.1)\n\nFetches geo-locations for a given BMTC route_id from the API.\n\nsource\n\n\nconvert_route_to_geojson\n\n convert_route_to_geojson (route, properties)\n\nConverts route into a geojson Feature.\n\nsource\n\n\nget_route_id\n\n get_route_id (filepath:pathlib.Path)\n\nThe filepath has route_id at the end.\n\nsource\n\n\ntask_fetch_route_points\n\n task_fetch_route_points (data_directory:pathlib.Path)",
+    "crumbs": [
+      "bmtc",
+      "2. Route Points"
+    ]
+  },
+  {
+    "objectID": "bmtc/route_details.html",
+    "href": "bmtc/route_details.html",
+    "title": "6. Route Details",
+    "section": "",
+    "text": "eta information is available from this API.\n\n\nsource\n\n\n\n fetch_route_details (route_id:int, sleep_duration:float=0.5)\n\nFetch route details for a given route ID from the BMTC API.\n\nsource\n\n\n\n\n extract_route_details (route_details)\n\n\nsource\n\n\n\n\n extract_map_data (route_details)\n\n\nsource\n\n\n\n\n task_fetch_route_details (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_route_details (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_map_data (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_vehicle_count (route_details)\n\nReturn total number of vehicles in route for both directions.\n\nsource\n\n\n\n\n task_fetch_route_details_v2 (data_directory:pathlib.Path)\n\nv2 of fetch route details, routes with the most vehicles.",
+    "crumbs": [
+      "bmtc",
+      "6. Route Details"
+    ]
+  },
+  {
+    "objectID": "bmtc/route_details.html#observations",
+    "href": "bmtc/route_details.html#observations",
+    "title": "6. Route Details",
+    "section": "",
+    "text": "eta information is available from this API.\n\n\nsource\n\n\n\n fetch_route_details (route_id:int, sleep_duration:float=0.5)\n\nFetch route details for a given route ID from the BMTC API.\n\nsource\n\n\n\n\n extract_route_details (route_details)\n\n\nsource\n\n\n\n\n extract_map_data (route_details)\n\n\nsource\n\n\n\n\n task_fetch_route_details (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_route_details (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_map_data (data_directory:pathlib.Path)\n\n\nsource\n\n\n\n\n get_vehicle_count (route_details)\n\nReturn total number of vehicles in route for both directions.\n\nsource\n\n\n\n\n task_fetch_route_details_v2 (data_directory:pathlib.Path)\n\nv2 of fetch route details, routes with the most vehicles.",
+    "crumbs": [
+      "bmtc",
+      "6. Route Details"
+    ]
+  }
+]
